@@ -1,0 +1,35 @@
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired, ValidationError, EqualTo
+
+from habrClone.models import User
+class LoginForm(FlaskForm):
+    username = StringField('Имя пользователя/Email', validators=[DataRequired()])
+    password = PasswordField('пароль', validators=[DataRequired()])
+    Remember_me = BooleanField('Запомнить меня')
+    submit = SubmitField('Войти')
+
+
+class RegistrationForm(FlaskForm):
+    username = StringField(validators=[DataRequired()])
+    email = StringField(validators=[DataRequired()])
+    password = StringField(validators=[DataRequired()])
+    password2 = StringField(validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Регистрация')
+
+
+
+class AccountUpdateForm(FlaskForm):
+    username = StringField(validators=[DataRequired()])
+    email = StringField(validators=[DataRequired()])
+    submit = SubmitField('Обновить')
+
+    def validate_username(self, username):
+        user = User.query.filter_by(username=username.data).first()
+        if user is not None:
+            raise ValidationError('Используйте другое имя!')
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is not None:
+            raise ValidationError('Используйте другой Email!')
