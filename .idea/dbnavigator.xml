@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="2ae717d1-8650-471b-a337-8df2eb0ad16a">
-        <schema name="main" object-types="table, view" />
+        <schema name="main" object-types="view, table, constraint, dataset trigger, column, index" />
       </connection>
     </loaded-nodes>
   </component>
@@ -35,12 +35,15 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="2ae717d1-8650-471b-a337-8df2eb0ad16a" object-ref="schemas/main/tables/user" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="2ae717d1-8650-471b-a337-8df2eb0ad16a" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="2ae717d1-8650-471b-a337-8df2eb0ad16a" dataset="main.new" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="2ae717d1-8650-471b-a337-8df2eb0ad16a" dataset="main.user" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">

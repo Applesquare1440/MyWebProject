@@ -15,9 +15,9 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(20), unique=True, index=True)
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(20))
-    avatar = db.Column(db.String(20), default='default.jpg')
+    avatar = db.Column(db.String(20), default='avatar.png')
     news = db.relationship('New', backref='author', lazy=True)
-
+    zvonki = db.relationship('Zvonok', backref='author', lazy=True)
     def __repr__(self):
         return f'Пользователь: {self.username}, email {self.email}'
 
@@ -35,6 +35,14 @@ class New(db.Model):
     body = db.Column(db.Text)
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+
+class Zvonok(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(100))
+    phone = db.Column(db.String(40))
+
+    user_username = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
 @login.user_loader

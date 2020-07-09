@@ -3,6 +3,20 @@ body {
     color: #333333;
 }
 
+i{
+    font-size: 1.5em;
+    }
+.content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+body {
+    background: #fafafa;
+    color: #333333;
+}
 .content-section {
     background: #ffffff;
     padding: 10px 20px;
@@ -50,4 +64,13 @@ a.dark {
     width: 125px;
     margin-right: 1.2em;
     margin-bottom: 1em;
+}
+.new {
+    margin-bottom: 1,5em;
+}
+
+.card-header {
+    font-size: 24px
+    color: #fff
+
 }

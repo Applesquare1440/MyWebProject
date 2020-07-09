@@ -6,10 +6,11 @@ from wtforms import BooleanField
 from wtforms import PasswordField
 from wtforms import StringField
 from wtforms import SubmitField
+from wtforms import TextAreaField
 from wtforms.validators import DataRequired
 from wtforms.validators import EqualTo
 from wtforms.validators import ValidationError
-
+from wtforms.validators import Length
 from habrClone.models import User
 
 
@@ -56,3 +57,12 @@ class AccountUpdateForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user is not None:
                 raise ValidationError('Используйте другой Email!')
+
+class NewsForm(FlaskForm):
+    body = TextAreaField('News text', validators=[DataRequired(), Length(min=1, max=200)])
+    submit = SubmitField('send')
+
+class ZvonokForm(FlaskForm):
+    phone = StringField('Your phone number:', validators=[DataRequired(), Length(9, 11)])
+    body = TextAreaField('News text:', validators=[DataRequired(), Length(min=1, max=200)])
+    submit = SubmitField('Send')
